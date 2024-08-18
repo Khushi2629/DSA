@@ -24,7 +24,7 @@ public:
       stack<int>s;
       for(auto log: logs){
         if(log=="../"){
-            if(s.empty()) continue;
+            if(!s.empty())
             s.pop();
         }else if(log=="./") continue;
         else{
