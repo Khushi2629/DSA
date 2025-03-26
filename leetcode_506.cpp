@@ -12,39 +12,40 @@ Return an array answer of size n where answer[i] is the rank of the ith athlete.
 
 
 
-
-
-
-
-  class Solution {
+class Solution {
 public:
     vector<string> findRelativeRanks(vector<int>& score) {
-        int n=score.size();
+        int n = score.size();
+        // Create a max-heap (priority queue) of pairs {score, original index}
         priority_queue<pair<int, int>> heap;
-        
-       
-        for(int i=0;i<n;i++){
-            heap.push({score[i],i});
-            
-
+        for (int i = 0; i < n; i++) {
+            heap.push({score[i], i});
         }
-        vector<string>rank(n);
-        int place=1;
-        while(!heap.empty()){
-            int originalIndex=heap.top().second;
+        
+        // This will store the rank string for each athlete (at the original index)
+        vector<string> rank(n);
+        int place = 1;
+        
+        // Process the heap: highest score comes first.
+        while (!heap.empty()) {
+            int originalIndex = heap.top().second;
             heap.pop();
-            if(place==1){
-                rank[originalIndex]="Gold Medal";
-            }else if(place==2){
-                rank[originalIndex]="Silver Medal";
-            }else if(place ==3){
-                rank[originalIndex]="Bronze Medal";
-            }else{
-                rank[originalIndex]=to_string(place);
+            
+            if (place == 1) {
+                rank[originalIndex] = "Gold Medal";
+            } else if (place == 2) {
+                rank[originalIndex] = "Silver Medal";
+            } else if (place == 3) {
+                rank[originalIndex] = "Bronze Medal";
+            } else {
+                rank[originalIndex] = to_string(place);
             }
             place++;
         }
-        return rank;
         
+        return rank;
     }
 };
+
+
+
