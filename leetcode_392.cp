@@ -11,23 +11,22 @@ A subsequence of a string is a new string that is formed from the original strin
 class Solution {
 public:
     bool isSubsequence(string s, string t) {
-        int n=t.size();
-        int k=s.size();
-        int j=0;
-        if(k==0)
-        return true;
-
-        for(int i=0;i<n;i++){
-            if(s[j]==t[i]){
+        int n = s.size();
+        int m = t.size();
+        int j = 0;
+        
+        // An empty string s is a subsequence of any string t.
+        if(n == 0)
+            return true;
+        
+        // Iterate over t (the longer string)
+        for(int i = 0; i < m && j < n; i++){
+            if(t[i] == s[j]){
                 j++;
             }
-            
         }
-        if(j==k){
-            return true;
-
-        }
-        return false;
         
+        // If we've matched all characters in s, then s is a subsequence of t.
+        return j == n;
     }
 };
