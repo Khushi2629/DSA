@@ -13,7 +13,7 @@ Note: A leaf is a node with no children.
 class Solution {
 public:
     int minDepth(TreeNode* root) {
-        if(!root) return 0;
+        if(root==NULL) return 0;
         int left=minDepth(root->left);
         int right=minDepth(root->right);
         if(!left || !right) return 1+ left+right;
