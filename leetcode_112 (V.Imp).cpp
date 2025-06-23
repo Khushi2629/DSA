@@ -16,6 +16,6 @@ public:
         }
         targetSum-=root->val;                // “If I’m at a node with value x, then the remaining sum I need to find in the child paths is targetSum - x.”
 
-         return hasPathSum(root->left,targetSum) || hasPathSum(root->right,targetSum);
+         return hasPathSum(root->left,targetSum) || hasPathSum(root->right,targetSum);     //If either subtree has a valid path, return true.
     }
 };
