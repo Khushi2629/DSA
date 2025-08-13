@@ -10,10 +10,10 @@ The next greater number of a number x is the first greater number to its travers
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
         int n=nums.size();
-        vector<int>ans(n,-1);
+        vector<int>ans(n,-1);    //no greater element found → -1
         stack<int>st;
-        for(int i=0;i < 2*n;i++){
-            int index = i % n;
+        for(int i=0;i < 2*n;i++){    //bcoz the array is circular
+            int index = i % n;    // ensures we wrap around
 
             while(!st.empty() && nums[index] > nums[st.top()]){
                 ans[st.top()]= nums[index];
